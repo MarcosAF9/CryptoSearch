@@ -1,8 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const SearchCoins = ({ getSearchResults }) => {
   const [query, setQuery] = useState("");
+
+  const inputRef = useRef(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -12,6 +14,12 @@ const SearchCoins = ({ getSearchResults }) => {
     const coin = await res.json();
 
     getSearchResults(coin);
+
+    setQuery("");
+
+    if (inputRef.current) {
+      inputRef.current.blur();
+    }
   };
 
   return (
@@ -22,6 +30,7 @@ const SearchCoins = ({ getSearchResults }) => {
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="text-black border-2 border-black rounded-full px-3 py-2"
+          ref={inputRef}
         />
         <button
           type="submit"
