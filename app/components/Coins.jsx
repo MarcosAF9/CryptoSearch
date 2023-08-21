@@ -4,9 +4,12 @@ import React from "react";
 const Coins = ({ coins }) => {
   return (
     <>
-      <ul className="grid grid-cols-3 mx-auto max-w-[1260px] gap-10">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto max-w-[1260px] gap-10">
         {coins.map((coin) => (
-          <li key={coin.uuid} className="mb-6 py-3 flex flex-col items-center rounded-lg shadow-lg">
+          <li
+            key={coin.uuid}
+            className="mb-6 py-3 flex flex-col items-center rounded-lg shadow-lg"
+          >
             <Image
               src={coin.iconUrl}
               alt={`${coin.name} icon`}
