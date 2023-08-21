@@ -4,7 +4,10 @@ import React from "react";
 const Coins = ({ coins }) => {
   return (
     <>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mx-auto max-w-[1260px] gap-10">
+      <ul
+        className="grid mx-auto max-w-[1260px] gap-10"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(20rem, 1fr))" }}
+      >
         {coins.map((coin) => (
           <li
             key={coin.uuid}
